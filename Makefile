@@ -99,6 +99,7 @@ dkms:
 	@dkms build -m $(DRIVER) -v $(DRIVER_VERSION)
 	@dkms install --force -m $(DRIVER) -v $(DRIVER_VERSION)
 	@modprobe $(DRIVER)
+	echo "$(DRIVER)" | tee /etc/modules-load.d/modules.conf
 
 dkms_clean:
 	@if [ ! -z "$(MODPROBE_OUTPUT)" ]; then \
